@@ -8,8 +8,9 @@
         <artifactId>chatbot-api</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <packaging>jar</packaging>
+
     <artifactId>chatbot-api-interfaces</artifactId>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -71,6 +72,8 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
         </dependency>
+
+
     </dependencies>
 
     <build>
