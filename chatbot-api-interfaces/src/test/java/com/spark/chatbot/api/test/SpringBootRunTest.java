@@ -1,6 +1,7 @@
 package com.spark.chatbot.api.test;
 
 import com.alibaba.fastjson.JSON;
+import com.spark.chatbot.api.domain.ai.IOpenAI;
 import com.spark.chatbot.api.domain.zsxq.IZsxqApi;
 import com.spark.chatbot.api.domain.zsxq.model.aggregates.UnAnsweredQuestionsAggregates;
 import com.spark.chatbot.api.domain.zsxq.model.vo.Talk;
@@ -27,9 +28,13 @@ public class SpringBootRunTest {
     private String groupId;
     @Value("${chatbot-api.cookie}")
     private String cookie;
+    @Value("${chatbot-api.aiKey}")
+    private String aiKey;
 
     @Autowired
     private IZsxqApi zsxqApi;
+    @Autowired
+    private IOpenAI openAI;
 
     @Test
     public void test_query_zsxqApi() throws IOException {
@@ -44,5 +49,11 @@ public class SpringBootRunTest {
             logger.info("topicId：{}", topicId);
             logger.info("问题：{}", text);
         }
+    }
+
+    @Test
+    public void test_openAi() throws IOException{
+        String response = openAI.doChatGPT(aiKey, "写一个java冒泡排序");
+        logger.info("测试结果：{}",response);
     }
 }
